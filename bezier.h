@@ -4,7 +4,7 @@ using namespace std;
 class BCurve
 {
 public:
-	vector<Point> *points;	//holds the control point
+	vector<Point> *points;		//holds the control point
 	float increment;		//change in @t as it's passed into bezier algorithm
 	int resolution;			//number of resolution points
 
@@ -61,12 +61,9 @@ void BCurve::draw()
 
 	for (i = 0; i <= resolution; i++) //get the points on the curve
 	{
-		casteljau(points, &point, t);
-		draw.push_back(point);
-		t += increment;
-
-		if (t == 1.0)
-			cout << "yee\n";
+		casteljau(points, &point, t); //use control points to get each point on the curve
+		draw.push_back(point); //add each point to draw later
+		t += increment; //casteljau algorithm uses this value in each calculation
 	}
 
 	for (i = 0; i < (points->size() - 1); i++) //draw control polygon
