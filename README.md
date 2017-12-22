@@ -1,11 +1,9 @@
 1)
 Chris Mendoza
-912216791
 csmendoza@ucdavis.edu
 
 2)
 g++ -o p4.out main.cpp -lglut -lGL
-
 Name of executable: p4.out
 
 3.)
