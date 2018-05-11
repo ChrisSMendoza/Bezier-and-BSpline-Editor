@@ -9,9 +9,12 @@ using namespace std;
 string command = ""; 
 int mainWindow;
 char file[] = { "curves.txt" };
+bool pressedKeys[26]; //track alpha keys for point manipulation
 
 void key(unsigned char key, int x, int y)
 {
+    pressedKeys[key - 'a'] = true;
+    
 	if(key != BACKSPACE)
 		command += key; //add entered key to the overall command string
 
@@ -99,5 +102,29 @@ void key(unsigned char key, int x, int y)
 		if (command.size() > 0)
 			command.pop_back();
 	}
-	cout << command << endl;
+	//cout << command << endl;
+}
+
+// sent to glutMotionFunc()
+// deletes, moves, and adds points
+void handleMouseInput(int x, int y)
+{
+    if(pressedKeys['a' - 'a'])
+    {
+        
+    }
+    else if(pressedKeys['d' - 'a'])
+    {
+        
+    }
+}
+
+void keyUp(unsigned char key, int x, int y)
+{
+    if(isalpha(key)) //only tracking a, d
+    {
+        //key is no longer being pressed
+        pressedKeys[key - 'a'] = false;
+
+    }
 }

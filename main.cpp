@@ -34,7 +34,13 @@ int main(int argc, char *argv[])
 	glClear(GL_COLOR_BUFFER_BIT);
 
 	glutDisplayFunc(display); //sets the display function
-	glutKeyboardFunc(key);
+    
+    //keys held down don't keep firing events
+    glutSetKeyRepeat(GLUT_KEY_REPEAT_OFF);
+    glutKeyboardFunc(key);
+    glutKeyboardUpFunc(keyUp);
+    
+    glutMotionFunc(handleMouseInput);
 
 	glutMainLoop(); //displays window until user enters x
 	return EXIT_SUCCESS;
